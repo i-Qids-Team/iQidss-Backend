@@ -1,0 +1,38 @@
+
+# REST API Server on Live Firebase
+@baseUrl = https://us-central1-i-qids.cloudfunctions.net/api
+
+### Getting the list of shape question
+GET {{baseUrl}}/shape
+
+###  Getting a question of given id
+GET {{baseUrl}}/shape/38DN9H8FdOIsSdEwFc3k
+
+###  Create a new question
+POST {{baseUrl}}/shape
+Content-Type: application/json
+
+{
+    "question": "Rectangle is a food",
+    "answer" : false
+}
+
+### Update the asnwer of a given shape (whether is completed or not)
+PATCH {{baseUrl}}/shape/38DN9H8FdOIsSdEwFc3k
+Content-Type: application/json
+
+{
+    "answer":true
+}
+
+
+### Replace the entire fields of a given shape
+PUT {{baseUrl}}/shape/38DN9H8FdOIsSdEwFc3k
+Content-Type: application/json
+
+{
+    "answer": true
+}
+
+### Deleting a given question
+DELETE {{baseUrl}}/shape/ExDtQJaV3Co0qPOiS833
