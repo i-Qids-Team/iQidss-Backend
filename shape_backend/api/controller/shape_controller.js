@@ -5,7 +5,7 @@ const router = express.Router();
 // Get all shape
 router.get("/", async (req, res, next) => {
   try {
-    const result = await quotesModel.get();
+    const result = await ShapeModel.get();
     return res.json(result);
   } catch (e) {
     return next(e);
@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 // Get one shape
 router.get("/:id", async (req, res, next) => {
   try {
-    const result = await quotesModel.getById(req.params.id);
+    const result = await ShapeModel.getById(req.params.id);
     if (!result) return res.sendStatus(404);
     return res.json(result);
   } catch (e) {
@@ -26,7 +26,7 @@ router.get("/:id", async (req, res, next) => {
 // Create a new shape
 router.post("/", async (req, res, next) => {
   try {
-    const result = await quotesModel.create(req.body);
+    const result = await ShapeModel.create(req.body);
     if (!result) return res.sendStatus(409);
     return res.status(201).json(result);
   } catch (e) {
@@ -37,7 +37,7 @@ router.post("/", async (req, res, next) => {
 // Delete a shape
 router.delete("/:id", async (req, res, next) => {
   try {
-    const result = await quotesModel.delete(req.params.id);
+    const result = await ShapeModel.delete(req.params.id);
     if (!result) return res.sendStatus(404);
     return res.sendStatus(200);
   } catch (e) {
@@ -51,13 +51,13 @@ router.patch("/:id", async (req, res, next) => {
     const id = req.params.id;
     const data = req.body;
 
-    const doc = await quotesModel.getById(id);
+    const doc = await ShapeModel.getById(id);
     if (!doc) return res.sendStatus(404);
 
     // Merge existing fields with the ones to be updated
     Object.keys(data).forEach((key) => (doc[key] = data[key]));
 
-    const updateResult = await quotesModel.update(id, doc);
+    const updateResult = await ShapeModel.update(id, doc);
     if (!updateResult) return res.sendStatus(404);
 
     return res.json(doc);
@@ -69,10 +69,10 @@ router.patch("/:id", async (req, res, next) => {
 // Replace a shape
 router.put("/:id", async (req, res, next) => {
   try {
-    const updateResult = await quotesModel.update(req.params.id, req.body);
+    const updateResult = await ShapeModel.update(req.params.id, req.body);
     if (!updateResult) return res.sendStatus(404);
 
-    const result = await quotesModel.getById(req.params.id);
+    const result = await ShapeModel.getById(req.params.id);
     return res.json(result);
   } catch (e) {
     return next(e);
