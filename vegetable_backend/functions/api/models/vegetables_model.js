@@ -1,4 +1,4 @@
-const databaseVege = require ("../databaseVegetables");
+const databaseVege = require("../databaseVegetables");
 
 class VegetablesModel {
     constructor() {
@@ -7,25 +7,14 @@ class VegetablesModel {
     }
 
     get() {
-        return databaseVege.getList('vegetable');
+        return databaseVege.getList('vegetable')
     }
 
-    getByid(id) {
-        return databaseVege.get('vegetable', id);
+    getById(id) {
+        return databaseVege.get('vegetable', id)
 
     }
 
-    // create(vege) {
-    //     return databaseVege.create('vegetable', vege);
-    // }
-
-    // delete(id) {
-    //     return databaseVege.delete('vegetable', id);
-    // }
-
-    // update(id, vege) {
-    //     return databaseVege.set('vegetable', id, vege);
-    // }
 }
 
 module.exports = new VegetablesModel();
