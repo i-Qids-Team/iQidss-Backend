@@ -1,0 +1,14 @@
+
+# @baseUrl = https://us-central1-i-qids.cloudfunctions.net/api
+@baseUrl = https://us-central1-i-qids.cloudfunctions.net/vegetable
+
+### Example of endpoints for basic CRUD operations.
+
+
+### Get the list of vegetable
+GET {{baseUrl}}/vegetable
+
+###  Getting a vegetable for a given id
+GET {{baseUrl}}/vegetable/hy2nKPNBFxyjEPClEsli
+
+

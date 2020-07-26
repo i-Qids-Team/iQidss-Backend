@@ -12,21 +12,19 @@ router.get('/', async (req, res, next) => {
     catch (e) {
         return next(e);
     }
-});
+})
 
 
 //get one question
-router.get(':/id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
     try {
-        const result = await vegetablesModel.getByid(req.params.id);
-        if (!result) {
-            return res.sendStatus(404);
-        }
-        return res.json(result);
+        const result = await vegetablesModel.getById(req.params.id);
+        if (!result) return res.sendStatus(404)
+        return res.json(result)
     }
     catch (e) {
         return next(e);
     }
-});
+})
 
 module.exports = router;
